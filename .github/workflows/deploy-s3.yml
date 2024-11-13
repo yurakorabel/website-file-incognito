@@ -25,4 +25,4 @@ jobs:
       # Step 3: Sync the contents of the website (public folder) with S3
       - name: Deploy to S3
         run: |
-          aws s3 sync ./public/ s3://website-files-incognito-bucket-korabel --delete --acl public-read
+          aws s3 sync ./public/ s3://website-files-incognito-bucket-korabel --delete
