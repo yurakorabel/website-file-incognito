@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File - File Sharing Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em 0;
+        }
+        main {
+            margin: 2em;
+        }
+        .file-download {
+            margin-top: 2em;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Download a File</h1>
+</header>
+
+<main>
+    <p>Enter the code you received to download your file.</p>
+
+    <div class="file-download">
+        <form action="/download" method="post">
+            <label for="code">Access Code:</label>
+            <input type="text" id="code" name="code" required>
+            <br><br>
+            <button type="submit">Download File</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 File Sharing Service. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
