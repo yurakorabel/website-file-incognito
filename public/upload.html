@@ -46,8 +46,8 @@
     <p>Fill out the form below to upload a file and send it to a recipient.</p>
 
     <div class="file-upload">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" required>
+        <form id="uploadForm">
+            <input type="file" id="fileInput" name="file" required>
             <br><br>
             <label for="email">Recipient's Email:</label>
             <input type="email" id="email" name="email" required>
@@ -60,6 +60,63 @@
 <footer>
     <p>&copy; 2024 File Sharing Service. All rights reserved.</p>
 </footer>
+
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Get the selected file and recipient email
+        const fileInput = document.getElementById('fileInput');
+        const recipientEmail = document.getElementById('email').value;
+        const file = fileInput.files[0];
+
+        if (!file) {
+            alert('Please select a file to upload.');
+            return;
+        }
+
+        // Convert the file to base64 encoding
+        const reader = new FileReader();
+        reader.onloadend = async function () {
+            const fileContentBase64 = reader.result.split(',')[1]; // Remove base64 header part
+
+            // Prepare the payload to send to the backend
+            const payload = {
+                file_content: fileContentBase64,
+                file_name: file.name,
+                recipient_email: recipientEmail
+            };
+
+            // Make a POST request to the backend API (API Gateway endpoint)
+            const apiGatewayUrl = 'https://7wdnsxvs8j.execute-api.us-east-1.amazonaws.com/run/upload';  // Replace with your API Gateway URL
+            const apiKey = '7CfYiLQmzF7YVzCrXQl8I6TdpEixONMegDEafyB3';  // Replace with your API Key
+
+            try {
+                const response = await fetch(apiGatewayUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': apiKey  // Add your API Key to headers
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    alert('File uploaded successfully! Access code: ' + data.access_code);
+                } else {
+                    alert('Error: ' + data.body);
+                }
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                alert('An error occurred while uploading the file.');
+            }
+        };
+
+        // Read the file as a base64 encoded string
+        reader.readAsDataURL(file);
+    });
+</script>
 
 </body>
 </html>
