@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File - ShadowSend</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/download.css">
+</head>
+
+<body>
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <img src="assets/images/logo.png" alt="ShadowSend Logo" id="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Download Section -->
+    <section id="download">
+        <h1>Download Your File</h1>
+        <p>Enter the access code provided to you in the email to retrieve your file securely.</p>
+
+        <!-- Download Form -->
+        <form id="downloadForm">
+            <div class="form-group">
+                <label for="accessCodeInput">Access Code</label>
+                <input type="text" id="accessCodeInput" name="accessCode" placeholder="Enter your access code" required>
+            </div>
+
+            <button type="submit" id="submitButton">Download File</button>
+        </form>
+        
+        <!-- Status Message -->
+        <div id="statusMessage"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ShadowSend. All rights reserved.</p>
+        <p><a href="terms.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script src="js/download.js"></script>
+</body>
+
+</html>

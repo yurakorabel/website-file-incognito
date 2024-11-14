@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Sharing Service</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-        }
-        main {
-            margin: 2em;
-        }
-        a {
-            display: inline-block;
-            margin: 1em;
-            padding: 10px 20px;
-            color: #fff;
-            background-color: #4CAF50;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>ShadowSend - Secure File Sharing</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <img src="assets/images/logo.png" alt="ShadowSend Logo" id="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <h1>Welcome to the File Sharing Service</h1>
-</header>
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Send files securely and privately with ShadowSend</h1>
+        <p>Share your files with confidence. Fast, secure, and private access.</p>
+        <button id="cta-button" onclick="window.location.href='upload.html'">Upload Your Files</button>
+    </section>
 
-<main>
-    <p>Select an option to get started:</p>
-    <a href="upload.html">Upload a File</a>
-    <a href="install.html">Download a File by Code</a>
-</main>
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Features</h2>
 
-<footer>
-    <p>&copy; 2024 File Sharing Service. All rights reserved.</p>
-</footer>
+        <div class="feature-item">
+            <img src="assets/icons/upload-icon.svg" alt="Easy Upload">
+            <h3>Easy Upload</h3>
+            <p>Upload your files securely with just a few clicks.</p>
+        </div>
 
+        <div class="feature-item">
+            <img src="assets/icons/download-icon.svg" alt="Fast Download">
+            <h3>Fast Download</h3>
+            <p>Share a temporary access code for quick file downloads.</p>
+        </div>
+
+        <div class="feature-item">
+            <img src="assets/icons/secure-icon.svg" alt="Secure">
+            <h3>Secure</h3>
+            <p>Your files are encrypted and stored safely, ensuring privacy.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ShadowSend. All rights reserved.</p>
+        <p><a href="terms.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -1,122 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload File - File Sharing Service</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-        }
-        main {
-            margin: 2em;
-        }
-        .file-upload {
-            margin-top: 2em;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Upload File - ShadowSend</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/upload.css">
 </head>
+
 <body>
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <img src="assets/images/logo.png" alt="ShadowSend Logo" id="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <h1>Upload a File</h1>
-</header>
+    <!-- Upload Section -->
+    <section id="upload">
+        <h1>Upload Your File</h1>
+        <p>Share your files securely with anyone. Just upload the file, and we’ll send a temporary access code to the recipient.</p>
 
-<main>
-    <p>Fill out the form below to upload a file and send it to a recipient.</p>
-
-    <div class="file-upload">
+        <!-- Upload Form -->
         <form id="uploadForm">
-            <input type="file" id="fileInput" name="file" required>
-            <br><br>
-            <label for="email">Recipient's Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br><br>
-            <button type="submit">Upload and Share</button>
+            <div class="form-group">
+                <label for="fileInput">Choose a file to upload</label>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="fileInput" name="file" accept="*/*" required>
+                    <span id="file-name" class="file-name">No file chosen</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="emailInput">Recipient's Email</label>
+                <input type="email" id="emailInput" name="email" placeholder="Enter recipient's email" required>
+            </div>
+
+            <button type="submit" id="submitButton">Upload File</button>
         </form>
-    </div>
-</main>
+        
+        <!-- Status Message -->
+        <div id="statusMessage"></div>
+    </section>
 
-<footer>
-    <p>&copy; 2024 File Sharing Service. All rights reserved.</p>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ShadowSend. All rights reserved.</p>
+        <p><a href="terms.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
 
-<script>
-    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        // Get the selected file and recipient email
-        const fileInput = document.getElementById('fileInput');
-        const recipientEmail = document.getElementById('email').value;
-        const file = fileInput.files[0];
-
-        if (!file) {
-            alert('Please select a file to upload.');
-            return;
-        }
-
-        // Convert the file to base64 encoding
-        const reader = new FileReader();
-        reader.onloadend = async function () {
-            const fileContentBase64 = reader.result.split(',')[1]; // Remove base64 header part
-
-            // Prepare the payload to send to the backend
-            const payload = {
-                file_content: fileContentBase64,
-                file_name: file.name,
-                recipient_email: recipientEmail
-            };
-
-            // Make a POST request to the backend API (API Gateway endpoint)
-            const apiGatewayUrl = 'https://7wdnsxvs8j.execute-api.us-east-1.amazonaws.com/run/upload';  // Replace with your API Gateway URL
-            const apiKey = '7CfYiLQmzF7YVzCrXQl8I6TdpEixONMegDEafyB3';  // Replace with your API Key
-
-            try {
-                const response = await fetch(apiGatewayUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': apiKey  // Add your API Key to headers
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                const data = await response.json();
-                if (response.ok) {
-                    alert('File uploaded successfully! Access code: ' + data.access_code);
-                } else {
-                    alert('Error: ' + data.body);
-                }
-            } catch (error) {
-                console.error('Error uploading file:', error);
-                alert('An error occurred while uploading the file.');
-            }
-        };
-
-        // Read the file as a base64 encoded string
-        reader.readAsDataURL(file);
-    });
-</script>
-
+    <script src="js/upload.js"></script>
 </body>
+
 </html>
