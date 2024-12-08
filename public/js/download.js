@@ -17,7 +17,7 @@ document.getElementById("downloadForm").addEventListener("submit", function (e) 
     statusMessage.className = "";
 
     // Make the API call to check the access code and retrieve the download URL
-    fetch(`https://5bezw5qz7d.execute-api.us-east-1.amazonaws.com/run/download?access_code=${accessCode}`)
+    fetch(`https://o9tmcbn2qe.execute-api.us-east-1.amazonaws.com/run/download?access_code=${accessCode}`)
         .then(response => response.json())
         .then(data => {
             if (data.message === "Presigned URL generated successfully") {
