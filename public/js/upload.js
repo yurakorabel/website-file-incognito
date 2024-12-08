@@ -34,7 +34,7 @@ document.getElementById("uploadForm").addEventListener("submit", async function 
             };
 
             // Call the upload API
-            const response = await fetch("https://xvrmllf5w0.execute-api.us-east-1.amazonaws.com/run/upload", {
+            const response = await fetch("https://5bezw5qz7d.execute-api.us-east-1.amazonaws.com/run/upload", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
